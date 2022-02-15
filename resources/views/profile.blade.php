@@ -7,8 +7,10 @@
         {{-- @if($errors->any())
             {{ implode('', $errors->all('<div>:message</div>')) }}
         @endif --}}
-            <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
+            <form method="POST" enctype="multipart/form-data" action="admin/profile">
                 @csrf
+
+                @method('PUT')
                   <h1>Edit Profile</h1>
                 <div class="row mb-3">
                   <label for="first_name"><b>First Name</b></label>
