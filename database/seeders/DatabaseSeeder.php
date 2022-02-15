@@ -15,12 +15,16 @@ class DatabaseSeeder extends Seeder
 
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        \App\Models\Role::factory(5)->create();
-        \App\Models\Gender::factory(5)->create();
-        \App\Models\EBook::factory(5)->create();
-        \App\Models\Order::factory(5)->create();
-        \App\Models\Account::factory(5)->create();
+        // \App\Models\Role::factory(1)->create();
+        // \App\Models\Gender::factory(1)->create();
+        $this->call([
+            RoleSeeder::class,
+            GenderSeeder::class,
+        ]);
+        \App\Models\EBook::factory(1)->create();
+        \App\Models\Order::factory(1)->create();
+        // \App\Models\Account::factory(1)->create();
+        \App\Models\User::factory(1)->create();
 
 
     }

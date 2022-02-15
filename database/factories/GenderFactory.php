@@ -22,9 +22,9 @@ class GenderFactory extends Factory
     {
         return [
 
-            // 'gender_id' => $this->faker->unique()->numberBetween(33, 44),
-            'gender_id' => $this->faker->unique()->numberBetween(260, 340),
-            'gender_desc' => $this->faker->sentence(25),
+            'gender_id' => $this->faker->unique()->numberBetween(492, 600),
+            // 'gender_id' => $this->faker->unique()->numberBetween(260, 340),
+            'gender_desc' => 'Male',
         ];
     }
 }

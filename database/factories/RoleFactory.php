@@ -23,9 +23,9 @@ class RoleFactory extends Factory
     public function definition()
     {
         return [
-            // 'role_id' => $this->faker->unique()->numberBetween(56, 66),
-            'role_id' => $this->faker->unique()->numberBetween(500, 600),
-            'role_desc' => $this->faker->sentence(25),
+            'id' => $this->faker->unique()->numberBetween(3, 5),
+            // 'role_id' => '1',
+            'role_desc' => 'Admin',
         ];
     }
 }

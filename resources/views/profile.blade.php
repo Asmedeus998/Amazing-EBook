@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-@if($errors->any())
-    {{ implode('', $errors->all('<div>:message</div>')) }}
-@endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -12,7 +9,7 @@
         @endif --}}
             <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
                 @csrf
-                  <h1>Sign Up</h1>
+                  <h1>Edit Profile</h1>
                 <div class="row mb-3">
                   <label for="first_name"><b>First Name</b></label>
                   <input type="text" name= "first_name" id="first_name" class="form-control @error('first_name') is-invalid @enderror" required>
@@ -128,5 +125,4 @@
 
 
     </div>
-</div>
 @endsection

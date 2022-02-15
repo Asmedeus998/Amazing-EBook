@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EBook;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('guest');
     }
 
     /**
@@ -23,6 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // get all ebook data
+        $ebooks = EBook::all();
+        // dd($ebooks);
+        return view('home', ['ebooks' => $ebooks]);
     }
-}
+
+
+
+    }
+

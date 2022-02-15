@@ -14,6 +14,11 @@ class Gender extends Model
 
     protected $fillable = [
         'gender_desc'
-
     ];
+
+    // one to many
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

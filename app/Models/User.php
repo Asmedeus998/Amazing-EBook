@@ -17,28 +17,49 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    public $timeStamps = false;
+    const UPDATED_AT = null;
+    const CREATED_AT = null;
+
+
     protected $fillable = [
-        'name',
+        'first_name',
+        'middle_name',
+        'last_name',
         'email',
         'password',
+        'display_picture_link',
+        'delete_flag',
+        'modified_at_date',
+        'modified_by',
+        'role_id',
+        'gender_id'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    // belong to one role
+    public function roles()
+    {
+        return $this->belongsTo(Role::class, 'role_id', 'id');
+    }
+
+    // belong to one gender
+    public function genders()
+    {
+        return $this->belongsTo(Gender::class, 'gender_id', 'gender_id');
+    }
+
+    // has to many order
+    public function orders()
+    {
+        return $this->belongsTo(Order::class, 'id', 'users_id');
+
+    }
+
+
+
 }

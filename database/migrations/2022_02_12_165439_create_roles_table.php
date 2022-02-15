@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('roles', function (Blueprint $table) {
-            $table->integer('role_id')->primary();
-            $table->string('role_desc', 25)->index();
+            $table->id();
+            $table->string('role_desc', 25)->index()->nullable();
         });
     }
 

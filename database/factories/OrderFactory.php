@@ -23,9 +23,9 @@ class OrderFactory extends Factory
     {
         return [
             // 'order_id' => $this->faker->unique()->numberBetween(45, 55),
-            'order_id' => $this->faker->unique()->numberBetween(350, 450),
+            'id' => $this->faker->unique()->numberBetween(350, 450),
             // get the account_id from the AccountFactory
-            'account_id' => AccountFactory::new()->create()->account_id,
+            'users_id' => UserFactory::new()->create()->id,
             // get ebook_id from the EBookFactory
             'ebook_id' => EBookFactory::new()->create()->ebook_id,
             'order_date' => $this->faker->dateTime(),

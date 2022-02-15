@@ -14,8 +14,19 @@ class Order extends Model
     const CREATED_AT = null;
 
     protected $fillable = [
-        'order_data',
+        'order_date',
         'ebook_id',
-        'account_id',
+        'users_id',
     ];
+
+    public function ebook()
+    {
+        return $this->belongsTo(EBook::class, 'ebook_id', 'ebook_id');
+    }
+
+    public function user()
+    {
+        // return $this->belongsTo(User::class, 'id', 'users_id');
+        return $this->hasMany(User::class, 'id', 'users_id');
+    }
 }

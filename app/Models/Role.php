@@ -16,4 +16,10 @@ class Role extends Model
         'role_desc',
     ];
 
+    // one to many relationship
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
 }

@@ -50,11 +50,20 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'first_name' => ['required', 'alpha_num', 'max:25'],
+            'middle_name' => ['nullable','alpha', 'max:25'],
+            'last_name' => ['required', 'alpha', 'max:25'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'alpha_num', 'min:8'],
+            'display_picture_link' => ['required', 'mimes:jpeg,bmp,png'],
+            'role_id' => ['required'],
+            'gender_id' => ['required'],
+
         ]);
+
+
     }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -64,10 +73,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'first_name' => $data['first_name'],
+            'middle_name' => $data['middle_name'],
+            'last_name' => $data['last_name'],
             'password' => Hash::make($data['password']),
+            'email' => $data['email'],
+            'display_picture_link' => $data['display_picture_link'],
+            'delete_flag' => 0,
+            'modified_at_date' => date('Y-m-d H:i:s'),
+            'modified_by' => 1,
+            'role_id' => $data['role_id'],
+            'gender_id' => $data['gender_id']
         ]);
+
+
     }
 }

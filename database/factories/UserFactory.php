@@ -15,14 +15,30 @@ class UserFactory extends Factory
      *
      * @return array
      */
+
+    public $timeStamps = false;
+    const UPDATED_AT = null;
+    const CREATED_AT = null;
+
+
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            // 'account_id' =>  'BN'.$this->faker->unique()->numberBetween(10, 20),
+            'id' =>  $this->faker->unique()->numberBetween(1000, 2000),
+            'first_name' => $this->faker->firstName,
+            'middle_name' => $this->faker->name(),
+            'last_name' => $this->faker->lastName(),
+            'email' => $this->faker->email(),
+            'password' => 'password',
+            'display_picture_link' => $this->faker->imageUrl(),
+            'delete_flag' => $this->faker->boolean(),
+            'modified_at_date' => $this->faker->dateTime(),
+            'modified_by' => $this->faker->numberBetween(1, 10),
+            // get the role_id from the RoleFactory
+            'role_id' => RoleFactory::new()->create()->id,
+            // get the gender_id from the GenderFactory
+            'gender_id' => GenderFactory::new()->create()->gender_id
         ];
     }
 

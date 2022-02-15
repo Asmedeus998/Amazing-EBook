@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('genders', function (Blueprint $table) {
-            $table->integer('gender_id')->primary();
-            $table->string('gender_desc', 25)->index();
+            $table->id('gender_id')->unsignedBigInteger();
+            $table->string('gender_desc', 25)->index()->nullable();
         });
     }
 
